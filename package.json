@@ -5,6 +5,10 @@
   "description": "Next.js + IP2Location project with Tor traffic blocking",
   "author": {"name": "Michael Wanyoike", "email": "micwanyoike@gmail.com"},
   "license": "LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:brandiqa/next-ip2location-example.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
