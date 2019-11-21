@@ -1,6 +1,6 @@
 # NextJS + IP2LOCATION Project Example
 
-Next.js + IP2Location project example  with Tor traffic blocking. Visit [SitePoint](https:///sitepoint.com/) for tutorial.
+Next.js + IP2Location project example  with Tor traffic blocking demonstration. Visit [SitePoint](https:///sitepoint.com/) for tutorial.
 
 ## Prerequisites
 
