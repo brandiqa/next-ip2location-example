@@ -2,6 +2,9 @@
   "name": "next-ip2location-example",
   "version": "0.1.0",
   "private": true,
+  "description": "Next.js + IP2Location project with Tor traffic blocking",
+  "author": {"name": "Michael Wanyoike", "email": "micwanyoike@gmail.com"},
+  "license": "LICENSE",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
