@@ -1,88 +1,71 @@
-import React from 'react'
+import React, {
+  useContext,
+  useEffect,
+  useState
+} from 'react'
+import Error from 'next/error'
+import fetch from 'isomorphic-unfetch'
 import Head from 'next/head'
-import Nav from '../components/nav'
+import Layout from '../layout/layout'
+import { ProxyContext } from '../context/proxy-context'
 
-const Home = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+const Home = ({newProxy, errorCode, errorMessage}) => {
+  // if (errorCode) {
+  //   return <Error statusCode={errorCode} title={errorMessage} />
+  // }
 
-    <Nav />
+  // const [proxy, setProxy] = useContext(ProxyContext)
+  // // Save new proxy state
+  // useEffect(() => {
+  //   let ignore = false
+  //   if(newProxy && !ignore) {
+  //     setProxy(newProxy)
+  //   }      
+  //    return () => { ignore = true; }
+  // }, [newProxy])
 
-    <div className="hero">
-      <h1 className="title">Welcome to Next.js!</h1>
-      <p className="description">
-        To get started, edit <code>pages/index.js</code> and save to reload.
-      </p>
+  return (
+    <Layout>
+      <Head>
+        <title>Home</title>
+      </Head>
 
-      <div className="row">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Learn more about Next.js in the documentation.</p>
-        </a>
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Next.js Learn &rarr;</h3>
-          <p>Learn about Next.js by following an interactive tutorial!</p>
-        </a>
-        <a
-          href="https://github.com/zeit/next.js/tree/master/examples"
-          className="card"
-        >
-          <h3>Examples &rarr;</h3>
-          <p>Find other example boilerplates on the Next.js GitHub.</p>
-        </a>
-      </div>
-    </div>
+      <section className="hero is-light">
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="title">Home</h1>
+            <h2 className="subtitle">Checking availability in your country...</h2>
+          </div>
+        </div>
+      </section>
+    </Layout>
+  )
+}
 
-    <style jsx>{`
-      .hero {
-        width: 100%;
-        color: #333;
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title,
-      .description {
-        text-align: center;
-      }
-      .row {
-        max-width: 880px;
-        margin: 80px auto 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
-      }
-    `}</style>
-  </div>
-)
+// Home.getInitialProps = async ({ req }) => {  
+//   if (req) { // This code will run in server mode
+//     const api_key = process.env.NEXT_SERVER_IP2PROXY_API || 'demo'
+//     const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+//     const localAddresses = ['::1', '127.0.0.1', 'localhost']
+//     let proxyUrl = `https://api.ip2proxy.com/?key=${api_key}&package=PX2`
+//     // If ipAddress is not localhost, add it to the query parameter
+//     if (!localAddresses.includes(ipAddress))
+//       proxyUrl.concat(`&ip=${ipAddress}`)    
+//     try {
+//       console.log('fecthing data', proxyUrl)
+//       const response = await fetch(proxyUrl)
+//       const json = await response.json()
+//       console.log(json)
+//       if (json.response != 'OK')
+//         return { errorCode: 500, errorMessage: json.response }
+//       const { isProxy, proxyType, countryName } = json
+//       const newProxy = { ipAddress, isProxy, proxyType, countryName }
+//       return{ newProxy }
+//     } catch (error) {
+//       return { errorCode: error.code, errorMessage: error.message.replace(api_key, 'demo') }
+//     }
+//   }
+//   return { newProxy: null } // This line will run in client mode
+// }
 
 export default Home
