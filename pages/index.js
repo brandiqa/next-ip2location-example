@@ -4,6 +4,7 @@ import React, {
 } from 'react'
 import Error from 'next/error'
 import fetch from 'isomorphic-unfetch'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Layout from '../layout/layout'
 import { ProxyContext } from '../context/proxy-context'
@@ -24,6 +25,24 @@ const Home = ({newProxy, errorCode, errorMessage}) => {
      return () => { ignore = true; }
   }, [newProxy])
 
+  // Declare router
+  const router = useRouter();
+
+  // Redirect if Proxy Type is TOR
+  useEffect(() => {
+    if (proxy.proxyType == 'TOR') {
+      router.replace('/abuse')
+    }
+  }, [proxy])
+
+  // Redirect based on country
+  const { countryName } = proxy
+  useEffect(() => {
+    if (countryName != 'Nowhere' && newProxy.proxyType !== 'TOR') {
+      redirectPage(router, countryName)
+    }
+  }, [proxy]);
+
   return (
     <Layout>
       <Head>
@@ -40,6 +59,21 @@ const Home = ({newProxy, errorCode, errorMessage}) => {
       </section>
     </Layout>
   )
+}
+
+const redirectPage = (router, countryName) => {
+  let redirectPage;
+  switch (countryName) {
+    case 'Kenya':
+      redirectPage = '/landing'
+      break
+    case 'United Kingdom':
+      redirectPage = '/landing'
+      break
+    default:
+      redirectPage = '/unavailable'
+  }
+  router.replace(redirectPage)
 }
 
 Home.getInitialProps = async ({ req }) => {  
