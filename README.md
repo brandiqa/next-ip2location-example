@@ -19,12 +19,11 @@ $ cd next-ip2location-example
 $ touch .env
 ```
 
-Visit [ip2location]() and sign up for the following trial keys:
+Visit [ip2location]() and sign up for the following trial key:
 
-- [IP2Location Trial Key](https://www.ip2location.com/web-service/ip2location)
 - [IP2Proxy Trial Key](https://www.ip2location.com/web-service/ip2proxy)
 
-The `demo` key will only give 20 credits per day. Signing up for IP2Location Trial Key will give you 5,000 free credits while the IP2Proxy Trial Key will give you 1,000 free credits. The keys will be sent to your email. Once you have obtained the keys, replace `demo` with your actual keys accordingly.
+The `demo` key will only give 20 credits per day. Signing up for the IP2Proxy Trial Key will give you 1,000 free credits. The API key will be sent to your email. Once you have obtained the key, replace the value `demo` with the API key in the `.env` file.
 
 ```env
 NEXT_SERVER_IP2PROXY_API=demo
@@ -42,7 +41,7 @@ $ yarn dev
 
 Open your browser and navigate to `localhost:3000`.
 
-## Deploy
+## Deployment
 
 You'll need to [download now](https://zeit.co/download) on your machine. Once it's installed, deploying the app is as simple as executing the following commands at the root of the project:
 
