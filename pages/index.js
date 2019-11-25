@@ -82,13 +82,13 @@ Home.getInitialProps = async ({ req }) => {
     const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress
     const localAddresses = ['::1', '127.0.0.1', 'localhost']
     let proxyUrl = `https://api.ip2proxy.com/?key=${api_key}&package=PX2`
-    // If ipAddress is not localhost, add it to the query parameter
+    // If ipAddress is not localhost, add it to the URL as a parameter
     if (!localAddresses.includes(ipAddress))
-      proxyUrl.concat(`&ip=${ipAddress}`)    
+      proxyUrl = proxyUrl.concat(`&ip=${ipAddress}`)
     try {
       const response = await fetch(proxyUrl)
       const json = await response.json()
-      console.log(json)
+      // console.log(json)
       if (json.response != 'OK')
         return { errorCode: 500, errorMessage: json.response }
       const { isProxy, proxyType, countryName } = json

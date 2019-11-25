@@ -24,11 +24,9 @@ Visit [ip2location]() and sign up for the following trial keys:
 - [IP2Location Trial Key](https://www.ip2location.com/web-service/ip2location)
 - [IP2Proxy Trial Key](https://www.ip2location.com/web-service/ip2proxy)
 
-The `demo` key will only give 20 credits per day. Signing up for IP2Location Trial Key will give you 5,000 free credits while the IP2Proxy Trial Key will give ou 1,000 free credits. The keys will be sent to your email. Once you have obtained the keys, replace `demo` with your actual keys accordingly.
+The `demo` key will only give 20 credits per day. Signing up for IP2Location Trial Key will give you 5,000 free credits while the IP2Proxy Trial Key will give you 1,000 free credits. The keys will be sent to your email. Once you have obtained the keys, replace `demo` with your actual keys accordingly.
 
 ```env
-NEXT_SERVER_TEST_IP=<any public ip address>
-NEXT_SERVER_IP2LOCATION_API=demo
 NEXT_SERVER_IP2PROXY_API=demo
 ```
 
@@ -49,8 +47,7 @@ Open your browser and navigate to `localhost:3000`.
 You'll need to [download now](https://zeit.co/download) on your machine. Once it's installed, deploying the app is as simple as executing the following commands at the root of the project:
 
 ```bash
-# Upload API keys
-$ now secrets add NEXT_SERVER_IP2LOCATION_API <secret-value>
+# Upload API keys (one time action)
 $ now secrets add NEXT_SERVER_IP2PROXY_API <secret-value>
 
 # Deploy the app
